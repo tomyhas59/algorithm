@@ -87,3 +87,42 @@ solution(); */
 }
 solution();
  */
+
+//일곱 난쟁이
+/* let arr = [22, 7, 21, 19, 10, 15, 25, 8, 13];
+function solution(arr) {
+  let answer = arr;
+  let sum = 0;
+  let flag = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (sum - (arr[i] + arr[j]) === 100) {
+        arr.splice(j, 1); //앞의 거 지우면 당겨지니 뒤부터 지움
+        arr.splice(i, 1);
+        flag = 1;
+        break;
+      }
+    }
+    if (flag === 1) break;
+  }
+  return answer;
+}
+console.log(solution(arr)); */
+
+//A를 #으로
+let str = "BABABA";
+function solution(s) {
+  /*  let answer = "";
+  for (let x of s) {
+    if (x === "A") {
+      answer += "#";
+    } else answer += x;
+  } */
+  let answer = s;
+  answer = answer.replace(/A/g, "#"); //정규식 표현 A를 찾아서 바꿔라 global의 g 써서 전체 바꿈, 없으면 한번 바꾸고 끝
+  return answer;
+}
+console.log(solution(str));
