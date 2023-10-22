@@ -113,16 +113,101 @@ function solution(arr) {
 console.log(solution(arr)); */
 
 //A를 #으로
-let str = "BABABA";
-function solution(s) {
-  /*  let answer = "";
-  for (let x of s) {
-    if (x === "A") {
-      answer += "#";
-    } else answer += x;
-  } */
-  let answer = s;
-  answer = answer.replace(/A/g, "#"); //정규식 표현 A를 찾아서 바꿔라 global의 g 써서 전체 바꿈, 없으면 한번 바꾸고 끝
+
+// let str = "BABABA";
+// function solution(s) {
+//   /*  let answer = "";
+//   for (let x of s) {
+//     if (x === "A") {
+//       answer += "#";
+//     } else answer += x;
+//   } */
+//   let answer = s;
+//   //정규식 표현 A를 찾아서 바꿔라 global의 g 써서 전체 바꿈, 없으면 한번 바꾸고 끝
+//   answer = answer.replace(/A/g, "#");
+//   return answer;
+// }
+// console.log(solution(str));
+
+/* 문자 찾기 */
+/* function solution(s) {
+  let answer = str.split(s).length - 1;
+  //R을 기준으로 구분하여 보여줌[ 'COMPUTE', 'P', 'OG', 'AMMING' ]
+
+  // let answer = 0;
+  // for (let x of str) {
+  //   if (x === s) {
+  //     answer += 1;
+  //   }
+  // }
   return answer;
 }
+let str = "COMPUTERPROGRAMMING";
+console.log(solution("R"));
+ */
+
+/* 대문자 찾기 toUpperCase*/
+/* function solution(s) {
+  let answer = 0;
+  for (let x of s) {
+    //let num=x.charCodeAt();
+    //if(num>=65 && num<=90)answer++;
+    //대문자 아스키 넘버 65~90, 소문자 97~122
+    if (x === x.toUpperCase()) {
+      answer += 1;
+    }
+  }
+  return answer;
+}
+let str = "KoreaTimeGood";
+console.log(solution(str)); */
+
+//대문자로 통일
+/* function solution(s) {
+  let answer = s.toUpperCase();
+
+  return answer;
+}
+let str = "ItisTimeToStudy";
+console.log(solution(str)); */
+
+//대소문자 변환 toLowerCase
+/* function solution(s) {
+  let answer = "";
+  for (let x of s) {
+    if (x === x.toUpperCase()) {
+      answer += x.toLowerCase();
+    } else if (x === x.toLowerCase()) {
+      answer += x.toUpperCase();
+    }
+  }
+  return answer;
+}
+console.log(solution("StuDY")); */
+
+//가장 긴 문자열
+/* function solution(s) {
+  let answer,
+    max = Number.MIN_SAFE_INTEGER;
+  for (let x of s) {
+    if (x.length > max) {
+      max = x.length;
+      answer = x;
+    }
+  }
+  return answer;
+}
+let str = ["teacher", "time", "student", "beautiful", "good"];
 console.log(solution(str));
+ */
+
+//가운데 문자 출력
+function solution(s) {
+  let answer;
+  let x = Math.floor(s.length / 2);
+  if (s.length % 2 === 0) {
+    answer = s[x - 1] + s[x];
+  } else answer = s[x];
+  return answer;
+}
+console.log(solution("study"));
