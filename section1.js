@@ -202,7 +202,7 @@ console.log(solution(str));
  */
 
 //가운데 문자 출력
-function solution(s) {
+/* function solution(s) {
   let answer;
   let x = Math.floor(s.length / 2);
   if (s.length % 2 === 0) {
@@ -211,3 +211,41 @@ function solution(s) {
   return answer;
 }
 console.log(solution("study"));
+ */
+
+//중복 문자 제거 indexOf
+/* function solution(s) {
+  let answer = "";
+  for (let i = 0; i < s.length; i++) {
+    if (s.indexOf(s[i]) === i) {
+      answer += s[i];
+    }
+  }
+  return answer;
+}
+console.log(solution("ksekkset")); */
+
+//중복 문자 개수 찾기
+/* function solution(s) {
+  let answer = 0;
+  let position = s.indexOf("k");
+  while (position !== -1) {
+    answer++;
+    position = s.indexOf("k", position + 1);
+  }
+  return answer;
+}
+console.log(solution("ksekkset"));
+ */
+
+//중복 단어 제거
+/* function solution(s) {
+  let answer;
+  answer = s.filter((v, i) => {
+    return s.indexOf(v) === i;
+  });
+  return answer;
+}
+let str = ["good", "time", "good", "time", "student"];
+
+console.log(solution(str)); */
