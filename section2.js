@@ -110,7 +110,7 @@ console.log(solution(arr));
  */
 
 //봉우리
-function solution(arr) {
+/* function solution(arr) {
   let answer = 0;
   let n = arr.length;
   let dx = [-1, 0, 1, 0];
@@ -147,3 +147,33 @@ let arr = [
   [8, 7, 3, 5, 2],
 ];
 console.log(solution(arr));
+ */
+
+//회문 문자열
+// function solution(s) {
+//   let answer = "YES";
+//   s = s.toUpperCase();
+//   if (s.split("").reverse().join("") !== s) {
+//     return "NO";
+//   }
+//   //reverse는 배열에서만 가능
+//   /*  let n = s.length;
+//   for (let i = 0; i < Math.floor(n / 2); i++) {
+//     if (s[i] !== s[n - i - 1]) {
+//       answer = "NO";
+//     }
+//   } */
+//   return answer;
+// }
+// console.log(solution("goooB"));
+
+//유효한 팰린드롬(회문) 정규식
+function solution(s) {
+  let answer = "YES";
+  s = s.toUpperCase().replace(/[^A-Z]/g, ""); //A~Z가 아닌 것 제외
+  console.log(s);
+  if (s.split("").reverse().join("") !== s) return "NO";
+  return answer;
+}
+let str = "found7, time: study; Yduts; emit, 7Dnuof";
+console.log(solution(str));
