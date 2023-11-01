@@ -168,7 +168,7 @@ console.log(solution(arr));
 // console.log(solution("goooB"));
 
 //유효한 팰린드롬(회문) 정규식
-function solution(s) {
+/* function solution(s) {
   let answer = "YES";
   s = s.toUpperCase().replace(/[^A-Z]/g, ""); //A~Z가 아닌 것 제외
   console.log(s);
@@ -176,4 +176,43 @@ function solution(s) {
   return answer;
 }
 let str = "found7, time: study; Yduts; emit, 7Dnuof";
-console.log(solution(str));
+console.log(solution(str)); */
+
+//숫자만 추출 isNaN
+/* function solution(s) {
+  let answer = "";
+  for (let x of s) {
+    if (!isNaN(x)) {
+      answer += x;
+    }
+  }
+  return parseInt(answer);
+}
+console.log(solution("g0en2T0s8eSoft")); */
+
+//가장 짧은 문자 거리
+function solution(s, t) {
+  let answer = [];
+  let p = 1000;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === t) {
+      p = 0;
+      answer.push(p);
+    } else {
+      p++;
+      answer.push(p);
+    }
+  }
+  p = 1000;
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] === t) {
+      p = 0;
+    } else {
+      p++;
+      answer[i] = Math.min(answer[i], p);
+    }
+  }
+  return answer;
+}
+console.log(solution("teachermode", "e"));
