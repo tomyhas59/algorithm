@@ -126,5 +126,3 @@ let arr = [
   [10, 3],
 ];
 console.log(solution(arr)); */
-
-//K번째 큰 수
