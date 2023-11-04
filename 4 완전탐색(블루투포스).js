@@ -126,3 +126,24 @@ let arr = [
   [10, 3],
 ];
 console.log(solution(arr)); */
+
+//K번째 수  set 쓰면 값 중복 안 됨
+
+function solution(card) {
+  let answer;
+  let n = 10;
+  let k = 3;
+  let tmp = new Set(); //set이라는 객체 할당
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      for (let k = j + 1; k < n; k++) {
+        tmp.add(card[i] + card[j] + card[k]);
+      }
+    }
+  }
+  let a = Array.from(tmp).sort((a, b) => b - a); //객체를 배열로 바꿈
+  answer = a[k - 1];
+  return answer;
+}
+let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+console.log(solution(arr));
