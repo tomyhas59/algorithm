@@ -17,7 +17,7 @@ let b = [2, 3, 6, 7, 9];
 console.log(solution(a, b)); */
 
 //공통원소 구하기
-function solution(arr1, arr2) {
+/* function solution(arr1, arr2) {
   let answer = [];
   arr1.sort((a, b) => a - b);
   arr2.sort((a, b) => a - b);
@@ -43,3 +43,42 @@ function solution(arr1, arr2) {
 let arr1 = [1, 3, 9, 5, 2];
 let arr2 = [3, 2, 5, 7, 8];
 console.log(solution(arr1, arr2));
+ */
+
+// 연속 분수 수열
+
+/* function solution(s) {
+  let answer = 0;
+  let sum = 0;
+  let p1 = (p2 = 0);
+
+  while (p2 < s.length) {
+    sum += s[p2++];
+    while (sum > 6) sum -= s[p1++];
+    if (sum === 6) answer++;
+  }
+
+  // for (let i = 0; i < s.length; i++) {
+  //   let sum = 0;
+  //   for (let j = i; j < s.length; j++) {
+  //     sum = sum + s[j];
+  //     if (sum === 6) {
+  //       answer++;
+  //     }
+  //     if (sum > 6) {
+  //       break;
+  //     }
+  //   }
+  // }
+
+  return answer;
+}
+let arr = [1, 2, 1, 3, 1, 1, 1, 2];
+console.log(solution(arr)); */
+
+//연속 부분 수열 2
+
+function solution() {
+  let answer;
+  return answer;
+}
