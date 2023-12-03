@@ -77,11 +77,78 @@ let arr = [1, 2, 1, 3, 1, 1, 1, 2];
 console.log(solution(arr)); */
 
 //연속 부분 수열 2
+/* 
+function solution(s) {
+  let answer = 0;
+  let sum = 0;
+  let p1 = 0;
 
-function solution() {
-  let answer;
+  for (let i = 0; i < s.length; i++) {
+    sum += arr[i];
+    while (sum > 5) {
+      sum -= arr[p1++];
+    }
+    answer += i - p1 + 1;
+  }
+  // for (let i = 0; i < s.length; i++) {
+  //   let sum = 0;
+  //   for (let j = i; j < s.length; j++) {
+  //     sum = sum + s[j];
+  //     if (sum <= 5) {
+  //       answer++;
+  //     }
+  //     if (sum > 5) {
+  //       break;
+  //     }
+  //   }
+  // }
 
   return answer;
 }
+let arr = [1, 3, 1, 2, 3];
+console.log(solution(arr)); */
 
-console.log(solution());
+//최대 매출 Sliding Window
+/* function solution(s) {
+  let answer = "";
+  let k = 3;
+  let sum = 0;
+  for (let i = 0; i < k; i++) sum += s[i];
+  answer = sum;
+  for (let i = k; i < s.length; i++) {
+    sum = sum + s[i] - s[i - k];
+    answer = Math.max(answer, sum);
+  }
+  // let maxSum = [];
+  // for (let i = 0; i < s.length - 2; i++) {
+  //   let sum = 0;
+  //   for (let j = i; j < i + k; j++) {
+  //     sum += s[j];
+  //   }
+  //   maxSum.push(sum);
+  // }
+  // answer = Math.max(...maxSum);
+  return answer;
+}
+let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr)); */
+
+//학급 회장 Hash Map
+function solution(s) {
+  let answer = "";
+  let sH = new Map();
+  for (let x of s) {
+    if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+    else sH.set(x, 1);
+  }
+  let max = Number.MIN_SAFE_INTEGER;
+  for (let [key, val] of sH) {
+    if (val > max) {
+      max = val;
+      answer = key;
+    }
+  }
+  return answer;
+}
+let arr = Array.from("BACBACCACCBDEDE");
+console.log(solution(arr));
