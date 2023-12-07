@@ -20,7 +20,7 @@ let arr = "(()()()()())";
 console.log(solution(arr)); */
 
 //괄호 문자 제거(스택)
-function solution(s) {
+/* function solution(s) {
   let answer = [];
 
   for (let i = 0; i < s.length; i++) {
@@ -41,3 +41,56 @@ function solution(s) {
 }
 let arr = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
 console.log(solution(arr));
+ */
+
+//크레인 인형뽑기
+
+function solution(board, moves) {
+  let answer = 0;
+  let stack = [];
+
+  // for (let i = 0; i < moves.length; i++) {
+  //   for (let j = 0; j < board.length; j++) {
+  //     if (board[j][moves[i] - 1] !== 0) {
+  //       stack.push(board[j][moves[i] - 1]);
+  //       board[j][moves[i] - 1] = 0;
+  //       if (
+  //         stack.length >= 2 &&
+  //         stack[stack.length - 1] === stack[stack.length - 2]
+  //       ) {
+  //         stack.pop();
+  //         stack.pop();
+  //         answer += 2;
+  //       }
+  //       break;
+  //     }
+  //   }
+  // }
+
+  moves.forEach((pos) => {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i][pos - 1] !== 0) {
+        let tmp = board[i][pos - 1];
+        board[i][pos - 1] = 0;
+        if (tmp === stack[stack.length - 1]) {
+          stack.pop();
+          answer += 2;
+        } else stack.push(tmp);
+        break;
+      }
+    }
+  });
+
+  return answer;
+}
+let board = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 3],
+  [0, 2, 5, 0, 1],
+  [4, 2, 4, 4, 2],
+  [3, 5, 1, 3, 1],
+];
+
+let moves = [1, 5, 3, 5, 1, 2, 1, 2];
+
+console.log(solution(board, moves));
