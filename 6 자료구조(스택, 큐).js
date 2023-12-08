@@ -45,7 +45,7 @@ console.log(solution(arr));
 
 //크레인 인형뽑기
 
-function solution(board, moves) {
+/* function solution(board, moves) {
   let answer = 0;
   let stack = [];
 
@@ -94,3 +94,53 @@ let board = [
 let moves = [1, 5, 3, 5, 1, 2, 1, 2];
 
 console.log(solution(board, moves));
+ */
+
+//후위식 연산(postfix)
+
+/* function solution(s) {
+  let answer;
+  let stack = [];
+
+  for (let x of s) {
+    if (!isNaN(x)) {
+      stack.push(Number(x));
+    } else {
+      let rt = stack.pop();
+      let lt = stack.pop();
+      if (x === "+") stack.push(lt + rt);
+      else if (x === "*") stack.push(lt * rt);
+      else if (x === "-") stack.push(lt - rt);
+    }
+  }
+  answer = stack[0];
+
+  return answer;
+}
+let arr="352+*9-"
+console.log(solution(arr));
+ */
+
+//쇠막대기
+
+function solution(s) {
+  let answer = 0;
+  let stack = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(") {
+      stack.push(s[i]);
+    } else {
+      stack.pop();
+      if (s[i - 1] === "(") {
+        answer += stack.length;
+      } else {
+        answer++;
+      }
+    }
+  }
+  return answer;
+}
+let str = "(((()(()()))(())()))(()())";
+
+console.log(solution(str));
