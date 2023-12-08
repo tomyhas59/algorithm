@@ -123,7 +123,7 @@ console.log(solution(arr));
 
 //쇠막대기
 
-function solution(s) {
+/* function solution(s) {
   let answer = 0;
   let stack = [];
 
@@ -144,3 +144,4 @@ function solution(s) {
 let str = "(((()(()()))(())()))(()())";
 
 console.log(solution(str));
+ */
