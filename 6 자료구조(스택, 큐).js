@@ -145,3 +145,45 @@ let str = "(((()(()()))(())()))(()())";
 
 console.log(solution(str));
  */
+
+//공주 구하기(큐)
+
+/* function solution(n, k) {
+  let answer;
+  let que = [];
+
+  for (let i = 0; i < n; i++) {
+    que.push(i + 1);
+  }
+
+  while (que.length > 1) {
+    for (let i = 1; i < k; i++) que.push(que.shift());
+    que.shift();
+  }
+  answer = que[0];
+  return answer;
+}
+
+console.log(solution(8, 3));
+ */
+
+//교육과정 설계
+
+function solution(s, a) {
+  let answer = "YES";
+  let que = s.split("");
+
+  for (let x of a) {
+    if (que.includes(x)) {
+      if (que.indexOf(x) === 0) que.shift();
+      else return "NO";
+    }
+  }
+  if (que.length > 0) return "NO";
+
+  return answer;
+}
+
+let subject = "ACB";
+let arr = "AGEDF";
+console.log(solution(subject, arr));
