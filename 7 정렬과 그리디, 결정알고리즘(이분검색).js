@@ -105,3 +105,106 @@ console.log(solution(arr)); */
 let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
 console.log(solution(5, arr)); */
 
+//장난꾸러기 현수 정렬 비교
+/* function solution(a) {
+  let answer = [];
+  let sortArr = a.slice().sort((a, b) => a - b);
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== sortArr[i]) {
+      answer.push(i + 1);
+    }
+  }
+  return answer;
+}
+
+let arr = [10, 130, 150, 150, 130, 150];
+
+console.log(solution(arr));
+ */
+
+//좌표 정렬
+/* function solution(a) {
+  let answer = a;
+  a.sort((a, b) => {
+    if (a[0] === b[0]) return a[1] - b[1];
+    else return a[0] - b[0];
+  });
+
+  return answer;
+}
+
+let arr = [
+  [2, 7],
+  [1, 3],
+  [1, 2],
+  [2, 5],
+  [3, 6],
+];
+
+console.log(solution(arr)); */
+
+//회의실 배정
+/* function solution(meeting) {
+  let answer = 0;
+  meeting.sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0] - b[0];
+    } else return a[1] - b[1];
+  });
+  console.log(meeting);
+
+  let et = 0;
+  for (let i = 0; i < meeting.length; i++) {
+    if (et <= meeting[i][0]) {
+      answer++;
+      et = meeting[i][1];
+    }
+  }
+  return answer;
+}
+
+let arr = [
+  [3, 3],
+  [2, 3],
+  [1, 3],
+];
+
+console.log(solution(arr));
+ */
+
+//결혼식
+function solution(times) {
+  let answer = Number.MIN_SAFE_INTEGER;
+  let timeLine = [];
+  for (x of times) {
+    timeLine.push({ time: x[0], start: true });
+    timeLine.push({ time: x[1], start: false });
+  }
+  // 시간에 따라 정렬하되, 동일한 시간의 경우 종료 지점을 우선시
+  timeLine.sort((a, b) => {
+    if (a.time === b.time) return a.start - b.start;
+    else return a.time - b.time;
+  });
+
+  let currentPeople = 0;
+
+  for (let i = 0; i < timeLine.length; i++) {
+    if (timeLine[i].start) {
+      currentPeople++;
+    } else {
+      currentPeople--;
+    }
+    answer = Math.max(answer, currentPeople);
+  }
+
+  return answer;
+}
+
+let arr = [
+  [1, 3],
+  [4, 8],
+  [5, 9],
+  [6, 10],
+];
+
+console.log(solution(arr));
