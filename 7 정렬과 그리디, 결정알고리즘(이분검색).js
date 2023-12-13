@@ -173,7 +173,7 @@ console.log(solution(arr));
  */
 
 //결혼식
-function solution(times) {
+/* function solution(times) {
   let answer = Number.MIN_SAFE_INTEGER;
   let timeLine = [];
   for (x of times) {
@@ -207,4 +207,29 @@ let arr = [
   [6, 10],
 ];
 
+console.log(solution(arr)); */
+
+//이분검색
+/* function solution(a) {
+  let answer;
+
+  a.sort((a, b) => a - b);
+  let lt = 0,
+    rt = a.length - 1;
+  while (lt <= rt) {
+    let mid = parseInt((lt + rt) / 2);
+    if (a[mid] === 32) {
+      answer = mid + 1;
+      break;
+    } else if (a[mid] > 32) rt = mid - 1;
+    else lt = mid + 1;
+  }
+
+  return answer;
+}
+
+let arr = [23, 87, 65, 12, 56, 32, 99, 81];
+
 console.log(solution(arr));
+ */
+
