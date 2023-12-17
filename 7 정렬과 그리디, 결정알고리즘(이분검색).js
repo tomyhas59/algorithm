@@ -209,7 +209,7 @@ let arr = [
 
 console.log(solution(arr)); */
 
-//이분검색
+//이분검색  while (lt <= rt)
 /* function solution(a) {
   let answer;
 
@@ -233,3 +233,35 @@ let arr = [23, 87, 65, 12, 56, 32, 99, 81];
 console.log(solution(arr));
  */
 
+//뮤직비디오(결정알고리즘)
+
+function count(a, capacity) {
+  let result = 1;
+  let sum = 0;
+  for (let i = 0; i < a.length; i++) {
+    sum += a[i];
+    if (sum > capacity) {
+      result++;
+      sum = a[i];
+    }
+  }
+  return result;
+}
+
+function solution(a, m) {
+  let answer;
+  let lt = Math.max(...a); //최소한의 용량
+  rt = a.reduce((a, c) => a + c); //최대한의 용량
+  while (lt <= rt) {
+    let mid = parseInt((lt + rt) / 2);
+    if (count(a, mid) <= m) {
+      answer = mid;
+      rt = mid - 1;
+    } else lt = mid + 1;
+  }
+
+  return answer;
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(solution(arr, 3));
