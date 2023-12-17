@@ -294,8 +294,9 @@ function solution(a, m) {
     } else rt = mid - 1;
   }
 
-  return answer; */
+  return answer;
 }
 
 let arr = [1, 2, 8, 4, 9];
 console.log(solution(arr, 3));
+ */
