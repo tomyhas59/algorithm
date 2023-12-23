@@ -60,7 +60,7 @@ console.log(solution(11)); */
 console.log(solution(1)); */
 
 //부분집합 구하기(이진트리DFS)
-function solution(n) {
+/* function solution(n) {
   let answer = [];
   let ch = Array.from({ length: n + 1 }, () => 0);
 
@@ -83,3 +83,50 @@ function solution(n) {
   return answer;
 }
 console.log(solution(3));
+ */
+
+//합이 같은 부분집합(이진트리 DFS)
+/* function solution(n, arr) {
+  let answer = "NO",
+    flag = 0;
+  let total = arr.reduce((a, c) => a + c, 0);
+
+  function DFS(L, sum) {
+    if (flag) return;
+    if (L === n) {
+      if (total - sum === sum) {
+        answer = "YES";
+        flag = 1;
+      }
+    } else {
+      DFS(L + 1, sum + arr[L]);
+      DFS(L + 1, sum);
+    }
+  }
+
+  DFS(0, 0);
+  return answer;
+}
+let arr = [1, 3, 5, 6, 7, 10];
+console.log(solution(6, arr));
+ */
+
+//바둑이 승차(DFS)
+function solution(n, arr) {
+  let answer;
+  let sumArr = [];
+  function DFS(L, sum) {
+    if (L === arr.length) {
+      if (sum < n) sumArr.push(sum);
+    } else {
+      DFS(L + 1, sum + arr[L]);
+      DFS(L + 1, sum);
+    }
+  }
+  DFS(0, 0);
+
+  answer = Math.max(...sumArr);
+  return answer;
+}
+let arr = [81, 58, 42, 33, 61];
+console.log(solution(259, arr));
