@@ -61,6 +61,7 @@ console.log(solution(1)); */
 
 //부분집합 구하기(이진트리DFS)
 /* function solution(n) {
+/* function solution(n) {
   let answer = [];
   let ch = Array.from({ length: n + 1 }, () => 0);
 
@@ -182,7 +183,7 @@ console.log(solution(20, arr)); */
 console.log(solution(3, 2)); */
 
 //동전 교환(DFS-Cut Edge Tech) 불필요한 재귀 제거
-function solution(arr, n) {
+/* function solution(arr, n) {
   let answer = Number.MAX_SAFE_INTEGER;
 
   function DFS(L, sum) {
@@ -197,8 +198,8 @@ function solution(arr, n) {
     }
   }
   DFS(0, 0);
-
   return answer;
 }
+
 let arr = [1, 2, 5];
-console.log(solution(arr, 15));
+console.log(solution(arr, 15)); */
