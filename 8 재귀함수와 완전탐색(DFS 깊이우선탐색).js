@@ -60,7 +60,7 @@ console.log(solution(11)); */
 console.log(solution(1)); */
 
 //부분집합 구하기(이진트리DFS)
-function solution(n) {
+/* function solution(n) {
   let answer = [];
   let ch = Array.from({ length: n + 1 }, () => 0);
 
@@ -83,3 +83,122 @@ function solution(n) {
   return answer;
 }
 console.log(solution(3));
+ */
+
+//합이 같은 부분집합(이진트리 DFS)
+/* function solution(n, arr) {
+  let answer = "NO",
+    flag = 0;
+  let total = arr.reduce((a, c) => a + c, 0);
+
+  function DFS(L, sum) {
+    if (flag) return;
+    if (L === n) {
+      if (total - sum === sum) {
+        answer = "YES";
+        flag = 1;
+      }
+    } else {
+      DFS(L + 1, sum + arr[L]);
+      DFS(L + 1, sum);
+    }
+  }
+
+  DFS(0, 0);
+  return answer;
+}
+let arr = [1, 3, 5, 6, 7, 10];
+console.log(solution(6, arr));
+ */
+
+//바둑이 승차(DFS)
+/* function solution(n, arr) {
+  let answer;
+  let sumArr = [];
+  function DFS(L, sum) {
+    if (L === arr.length) {
+      if (sum < n) sumArr.push(sum);
+    } else {
+      DFS(L + 1, sum + arr[L]);
+      DFS(L + 1, sum);
+    }
+  }
+  DFS(0, 0);
+
+  answer = Math.max(...sumArr);
+  return answer;
+}
+let arr = [81, 58, 42, 33, 61];
+console.log(solution(259, arr)); */
+
+//최대점수 구하기(이진트리 DFS)
+/* function solution(n, arr) {
+  let answer;
+  let sumArr = [];
+  function DFS(L, sum, time) {
+    if (L === arr.length) {
+      if (time <= n) {
+        sumArr.push(sum);
+      }
+    } else {
+      DFS(L + 1, sum + arr[L][0], time + arr[L][1]);
+      DFS(L + 1, sum, time);
+    }
+  }
+  DFS(0, 0, 0);
+
+  answer = Math.max(...sumArr);
+  return answer;
+}
+let arr = [
+  [10, 5],
+  [25, 12],
+  [15, 8],
+  [6, 3],
+  [7, 4],
+];
+console.log(solution(20, arr)); */
+
+//중복순열(다중 for문과 재귀의 차이점)
+/* function solution(n, m) {
+  let answer = [];
+  let tmp = Array.from({ length: m }, () => 0);
+
+  function DFS(L) {
+    if (L === m) {
+      answer.push(tmp.slice());
+    } else {
+      for (let i = 1; i <= n; i++) {
+        tmp[L] = i;
+        DFS(L + 1);
+      }
+    }
+  }
+  DFS(0);
+
+  return answer;
+}
+
+console.log(solution(3, 2)); */
+
+//동전 교환(DFS-Cut Edge Tech) 불필요한 재귀 제거
+function solution(arr, n) {
+  let answer = Number.MAX_SAFE_INTEGER;
+
+  function DFS(L, sum) {
+    if (sum > n) return;
+    if (L >= answer) return;
+    if (sum === n) {
+      answer = Math.min(answer, L);
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        DFS(L + 1, sum + arr[i]);
+      }
+    }
+  }
+  DFS(0, 0);
+
+  return answer;
+}
+let arr = [1, 2, 5];
+console.log(solution(arr, 15));
