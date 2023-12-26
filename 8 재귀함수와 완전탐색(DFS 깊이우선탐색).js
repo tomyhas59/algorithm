@@ -60,7 +60,7 @@ console.log(solution(11)); */
 console.log(solution(1)); */
 
 //부분집합 구하기(이진트리DFS)
-/* function solution(n) {
+
 /* function solution(n) {
   let answer = [];
   let ch = Array.from({ length: n + 1 }, () => 0);
@@ -203,3 +203,30 @@ console.log(solution(3, 2)); */
 
 let arr = [1, 2, 5];
 console.log(solution(arr, 15)); */
+
+//순열 구하기
+function solution(arr, n) {
+  let answer = [];
+  let ch = Array.from({ length: arr.length }, () => 0);
+  let tmp = Array.from({ length: n }, () => 0);
+
+  function DFS(L) {
+    if (L === n) {
+      answer.push(tmp.slice());
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        if (ch[i] === 0) {
+          ch[i] = 1;
+          tmp[L] = arr[i];
+          DFS(L + 1);
+          ch[i] = 0;
+        }
+      }
+    }
+  }
+  DFS(0);
+  return answer;
+}
+
+let arr = [3, 6, 9];
+console.log(solution(arr, 2));
