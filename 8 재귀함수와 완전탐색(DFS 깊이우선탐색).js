@@ -204,7 +204,7 @@ console.log(solution(3, 2)); */
 let arr = [1, 2, 5];
 console.log(solution(arr, 15)); */
 
-//순열 구하기
+//순열 모든 조합 구하기
 /* function solution(arr, n) {
   let answer = [];
   let ch = Array.from({ length: arr.length }, () => 0);
@@ -263,7 +263,7 @@ console.log(solution(5)); */
 console.log(solution(33, 19)); */
 
 //수열추측하기(순열, 이항계수 응용)
-function solution(n, f) {
+/* function solution(n, f) {
   let answer;
   let flag = 0;
   let dy = Array.from(Array(11), () => Array(11).fill(0));
@@ -300,4 +300,54 @@ function solution(n, f) {
   return answer;
 }
 
-console.log(solution(4, 16));
+console.log(solution(4, 16)); */
+
+//중복 없는 조합 구하기
+/* function solution(n, m) {
+  let answer = [];
+  let tmp = Array.from({ length: m }, () => 0);
+
+  function DFS(L, s) {
+    if (L === m) {
+      answer.push(tmp.slice());
+    } else {
+      for (let i = s; i <= n; i++) {
+        {
+          tmp[L] = i;
+          DFS(L + 1, i + 1);
+        }
+      }
+    }
+  }
+  DFS(0, 1);
+  return answer;
+}
+
+console.log(solution(4, 2));
+ */
+
+//수들의 조합
+/* function solution(arr, k, m) {
+  let answer = 0;
+  let tmp = Array.from({ length: k }, () => 0);
+
+  function DFS(L, s) {
+    if (L === k) {
+      let sum = tmp.reduce((a, c) => a + c);
+      if (sum % m === 0) answer++;
+    } else {
+      for (let i = s; i < arr.length; i++) {
+        {
+          tmp[L] = arr[i];
+          DFS(L + 1, i + 1);
+        }
+      }
+    }
+  }
+  DFS(0, 0);
+  return answer;
+}
+
+let arr = [2, 4, 5, 8, 12];
+console.log(solution(arr, 3, 6));
+ */
