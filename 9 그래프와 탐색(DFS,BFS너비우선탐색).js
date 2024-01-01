@@ -1,10 +1,6 @@
 //경로탐색 DFS 인접행렬 노드 개수가 적을 때
 
-<<<<<<< HEAD
 /* function solution(arr, n) {
-=======
-function solution(arr, n) {
->>>>>>> 2be08edf3f70993c2ffe21dc7af6d4becf06efbe
   let answer = [];
   let ch = Array.from({ length: n + 1 }, () => 0);
   let graph = Array.from(Array(n + 1), () => Array(n + 1).fill(0));
@@ -23,13 +19,8 @@ function solution(arr, n) {
       for (let i = 1; i <= n; i++) {
         if (graph[v][i] && ch[i] === 0) {
           ch[i] = 1;
-<<<<<<< HEAD
           route.push(i); 
           DFS(i); //정점을 DFS로 넣어줌
-=======
-          route.push(i);
-          DFS(i);
->>>>>>> 2be08edf3f70993c2ffe21dc7af6d4becf06efbe
           ch[i] = 0;
           route.pop();
         }
