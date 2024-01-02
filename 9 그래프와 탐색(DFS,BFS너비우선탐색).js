@@ -94,7 +94,7 @@ console.log(solution(arr, 5));
  */
 
 //미로 탐색
-function solution(arr) {
+/* function solution(arr) {
   let n = arr.length;
   let answer = [];
   let dx = [-1, 0, 1, 0];
@@ -119,22 +119,22 @@ function solution(arr) {
     }
   }
 
-  /*  function DFS(dx, dy) {
-    if (dx === n - 1 && dy === n - 1) {
-      answer.push(route.slice());
-    } else {
-      if (dx >= 0 && dy >= 0 && dx < n && dy < n && arr[dx][dy] === 0) {
-        arr[dx][dy] = 1;
-        route.push([dx, dy]);
-        DFS(dx - 1, dy);
-        DFS(dx, dy + 1);
-        DFS(dx + 1, dy);
-        DFS(dx, dy - 1);
-        arr[dx][dy] = 0;
-        route.pop();
-      }
-    }
-  } */
+  //  function DFS(dx, dy) {
+  //   if (dx === n - 1 && dy === n - 1) {
+  //     answer.push(route.slice());
+  //   } else {
+  //     if (dx >= 0 && dy >= 0 && dx < n && dy < n && arr[dx][dy] === 0) {
+  //       arr[dx][dy] = 1;
+  //       route.push([dx, dy]);
+  //       DFS(dx - 1, dy);
+  //       DFS(dx, dy + 1);
+  //       DFS(dx + 1, dy);
+  //       DFS(dx, dy - 1);
+  //       arr[dx][dy] = 0;
+  //       route.pop();
+  //     }
+  //   }
+  // }
   arr[0][0] = 1;
   DFS(0, 0);
   return answer;
@@ -149,4 +149,91 @@ let arr = [
   [1, 1, 0, 1, 1, 0, 0],
   [1, 0, 0, 0, 0, 0, 0],
 ];
-console.log(solution(arr));
+console.log(solution(arr)); */
+
+//이진트리 넓이우선탐색(BFS) 최단거리 구할 때
+
+/* function solution() {
+  let answer = "";
+  let queue = [];
+  queue.push(1);
+  while (queue.length) {
+    let v = queue.shift();
+    answer += v + " ";
+    for (let nv of [v * 2, v * 2 + 1]) {
+      if (nv > 7);
+      queue.push(nv);
+    }
+  }
+  return answer;
+}
+
+console.log(solution());
+ */
+
+//송아지 찾기 BFS 상태트리탐색
+/* function solution(s, e) {
+  let answer = 0;
+  let ch = Array.from({ length: 10001 }, () => 0);
+  let dis = Array.from({ length: 10001 }, () => 0);
+  let queue = [];
+  ch[s] = 1;
+  queue.push(s);
+  dis[s] = 0;
+
+  while (queue.length) {
+    let x = queue.shift();
+    for (let nx of [x - 1, x + 1, x + 5]) {
+      if (nx === e) return dis[x] + 1;
+      if (nx > 0 && nx <= 10000 && ch[nx] === 0) {
+        ch[nx] = 1;
+        dis[nx] = dis[x] + 1;
+        queue.push(nx);
+      }
+    }
+  }
+  return answer;
+}
+
+console.log(solution(5, 14));
+ */
+
+//섬라나 아일랜드 (DFS 활용)
+function solution(n, arr) {
+  let answer = 0;
+  let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+  let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+
+  function DFS(x, y) {
+    arr[x][y] = 0;
+    for (let k = 0; k < dx.length; k++) {
+      let nx = x + dx[k];
+      let ny = y + dy[k];
+      if (nx >= 0 && nx < n && ny >= 0 && ny < n && arr[nx][ny] === 1) {
+        DFS(nx, ny);
+      }
+    }
+  }
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (arr[i][j] === 1) {
+        answer++;
+        DFS(i, j);
+      }
+    }
+  }
+
+  return answer;
+}
+
+let arr = [
+  [1, 1, 0, 0, 0, 1, 0],
+  [0, 1, 1, 0, 1, 1, 0],
+  [0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1, 0, 0],
+  [1, 0, 0, 0, 1, 0, 0],
+  [1, 0, 1, 0, 1, 0, 0],
+];
+console.log(solution(7, arr));

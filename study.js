@@ -90,3 +90,37 @@ console.log(solution(arr, 2)); */
 }
 let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
 console.log(solution(5, arr)); */
+
+//이분검색  while (lt <= rt) 정렬 후 사용
+/* function solution(arr, m) {
+  arr.sort((a, b) => a - b);
+  if (arr.reduce((a, b) => a + b, 0) <= m) {
+    return arr;
+  }
+
+  // 상한액을 찾기 위한 이분 탐색
+  let start = 1;
+  let end = Math.max(...arr);
+  let answer = Number.MIN_SAFE_INTEGER;
+
+  while (start <= end) {
+    const mid = Math.floor((start + end) / 2);
+
+    const total = arr.map((request) => Math.min(request, mid));
+    const sum = total.reduce((a, b) => a + b, 0);
+
+    if (sum > m) {
+      end = mid - 1;
+    } else {
+      start = mid + 1;
+      answer = Math.max(answer, mid);
+    }
+  }
+
+  return answer;
+}
+
+const arr = [120, 110, 140, 150];
+
+console.log(solution(arr, 485));
+ */
