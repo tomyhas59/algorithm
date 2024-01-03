@@ -198,8 +198,8 @@ console.log(solution());
 console.log(solution(5, 14));
  */
 
-//섬라나 아일랜드 (DFS 활용)
-function solution(n, arr) {
+//섬나라 아일랜드 (DFS 활용)
+/* function solution(n, arr) {
   let answer = 0;
   let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
   let dy = [0, 1, 1, 1, 0, -1, -1, -1];
@@ -222,6 +222,54 @@ function solution(n, arr) {
         DFS(i, j);
       }
     }
+  }
+
+  return answer;
+}
+
+let arr = [
+  [1, 1, 0, 0, 0, 1, 0],
+  [0, 1, 1, 0, 1, 1, 0],
+  [0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1, 0, 0],
+  [1, 0, 0, 0, 1, 0, 0],
+  [1, 0, 1, 0, 1, 0, 0],
+];
+console.log(solution(7, arr)); */
+
+//섬나라 아일랜드 BFS
+function solution(n, arr) {
+  let answer = 0;
+  let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+  let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (arr[i][j] === 1) {
+        BFS(i, j);
+      }
+    }
+  }
+
+  function BFS(x, y) {
+    let queue = [];
+    arr[x][y] = 0;
+    queue.push([x, y]);
+    answer++;
+    while (queue.length) {
+      let v = queue.shift();
+      console.log(v);
+      for (let k = 0; k < dx.length; k++) {
+        let nx = v[0] + dx[k];
+        let ny = v[1] + dy[k];
+        if (nx >= 0 && nx < n && ny >= 0 && ny < n && arr[nx][ny] === 1) {
+          arr[nx][ny] = 0;
+          queue.push([nx, ny]);
+        }
+      }
+    }
+    console.log("BFS end");
   }
 
   return answer;
