@@ -61,7 +61,7 @@ console.log(solution(arr)); */
 
 //동전교환 (냅색 알고리즘)
 
-function solution(m, coin) {
+/* function solution(m, coin) {
   let answer = 0;
   let dy = Array.from({ length: m + 1 }, () => 1000);
   dy[0] = 0;
@@ -76,3 +76,25 @@ function solution(m, coin) {
 }
 let arr = [1, 2, 5];
 console.log(solution(15, arr));
+ */
+
+//최대점수 구하기(냅색 알고리즘)
+
+function solution(m, score, time) {
+  let answer;
+  let dy = Array.from({ length: m + 1 }, () => 0);
+
+  for (let i = 0; i < time.length; i++) {
+    for (let j = m; j >= time[i]; j--) {
+      dy[j] = Math.max(dy[j], dy[j - time[i]] + score[i]);
+    }
+  }
+  answer = dy[m];
+
+  return answer;
+}
+
+let score = [10, 25, 15, 6, 7];
+let time = [5, 12, 8, 3, 4];
+
+console.log(solution(20, score, time));
