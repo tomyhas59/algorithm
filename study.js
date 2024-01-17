@@ -2,13 +2,9 @@
 function solution(s, t) {
   let answer = [];
   let tArr = [];
-  let tIndex = -1;
 
-  for (let x of s) {
-    if (x === t) {
-      tIndex = s.indexOf(x, tIndex + 1);
-      tArr.push(tIndex);
-    }
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === t) tArr.push(i);
   }
 
   for (let i = 0; i < s.length; i++) {
