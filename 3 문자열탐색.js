@@ -53,6 +53,7 @@ console.log(solution("g0en2T0s8eSoft")); */
       answer.push(p);
     }
   }
+  console.log(answer);
   p = 1000;
   for (let i = s.length - 1; i >= 0; i--) {
     if (s[i] === t) {
@@ -62,11 +63,11 @@ console.log(solution("g0en2T0s8eSoft")); */
       answer[i] = Math.min(answer[i], p);
     }
   }
+
   return answer;
 }
 console.log(solution("teachermode", "e"));
  */
-
 //문자열 압축 반복 문자 숫자로 표기
 /* function solution(s) {
   let answer = "";
