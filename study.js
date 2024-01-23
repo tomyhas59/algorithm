@@ -90,7 +90,6 @@ function solution(arr) {
     }
     if (isPrime(result)) answer.push(result);
   }
-
   return answer;
 }
 
