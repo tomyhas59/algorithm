@@ -71,7 +71,7 @@ console.log(solution(arr)); */
 
 //뒤집은 소수
 
-function isPrime(result) {
+/* function isPrime(result) {
   if (result === 1) return false;
   for (let i = 2; i < result; i++) {
     if (result % i === 0) return false;
@@ -80,7 +80,7 @@ function isPrime(result) {
 }
 function solution(arr) {
   let answer = [];
-
+//순자 뒤집기
   for (let x of arr) {
     let result = 0;
     while (x) {
@@ -95,4 +95,4 @@ function solution(arr) {
 
 let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
 
-console.log(solution(arr));
+console.log(solution(arr)); */
