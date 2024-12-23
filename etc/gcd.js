@@ -6,5 +6,3 @@ function gcd(a, b) {
   }
   return a;
 }
-
-console.log(gcd(3, 15));
