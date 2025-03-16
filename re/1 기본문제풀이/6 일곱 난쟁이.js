@@ -24,7 +24,7 @@ function solution(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] + arr[j] === sum) {
-        arr.splice(j, 1);
+        arr.splice(j, 1); //앞의 거 지우면 당겨지니 뒤부터 지움
         arr.splice(i, 1);
       }
     }
