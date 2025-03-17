@@ -1,11 +1,6 @@
 //두 수의 최대공약수
 function gcd(a, b) {
-  while (b !== 0) {
-    let temp = b;
-    b = a % b;
-    a = temp;
-  }
-  return a;
+  return b === 0 ? a : gcd(b, a % b);
 }
 
 console.log(gcd(3, 12));
