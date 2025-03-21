@@ -30,7 +30,38 @@
 */
 
 function solution(arr) {
-  return;
+  let n = arr.length;
+  let paddedArr = Array.from({ length: n + 2 }, () => Array(n + 2).fill(0));
+
+  // 입력 배열을 패딩 배열의 중앙에 복사
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      paddedArr[i + 1][j + 1] = arr[i][j];
+    }
+  }
+
+  let count = 0;
+  let directions = [
+    [0, -1], // 왼쪽
+    [1, 0], // 아래
+    [0, 1], // 오른쪽
+    [-1, 0], // 위
+  ];
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= n; j++) {
+      let isPeak = true;
+      for (let [dx, dy] of directions) {
+        if (paddedArr[i][j] <= paddedArr[i + dx][j + dy]) {
+          isPeak = false;
+          break;
+        }
+      }
+      if (isPeak) count++;
+    }
+  }
+
+  return count;
 }
 
 const grid = [
@@ -40,4 +71,5 @@ const grid = [
   [4, 3, 6, 4, 1],
   [8, 7, 3, 5, 2],
 ];
-console.log(solution(grid));
+
+console.log(solution(grid)); // 10
