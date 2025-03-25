@@ -13,7 +13,7 @@ N
 각 자연수의 크기는
 N(3<=N<=100)
  10,000,000
-이 주어지고 그 다음 줄에 개의자연수가 주어진다
+이 주어지고 그 다음 줄에 개의 자연수가 주어진다
 를 넘지 않는다
 ▣ 출력설명
 자릿수의 합이 최대인 자연수를 출력한다.
@@ -25,7 +25,23 @@ N(3<=N<=100)
   */
 
 function solution(arr) {
-  return result;
+  let numbers = arr.map((v) =>
+    v
+      .toString()
+      .split("")
+      .reduce((a, b) => Number(a) + Number(b))
+  );
+
+  let max = Math.max(...numbers);
+
+  const indices = numbers.reduce((acc, value, index) => {
+    if (value === max) acc.push(index);
+    return acc;
+  }, []);
+
+  let maxes = indices.map((v) => arr[v]);
+
+  return Math.max(...maxes);
 }
 
 console.log(solution([128, 460, 603, 40, 521, 137, 123]));
