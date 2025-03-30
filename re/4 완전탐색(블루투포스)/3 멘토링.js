@@ -28,7 +28,28 @@
 */
 
 function solution(arr) {
-  return arr;
+  let num = 0;
+
+  for (let i = 1; i <= arr[0].length; i++) {
+    for (let j = 1; j <= arr[0].length; j++) {
+      if (i === j) continue;
+
+      let isValid = true;
+
+      for (let exam of arr) {
+        let iRank = exam.indexOf(i);
+        let jRank = exam.indexOf(j);
+
+        if (iRank > jRank) {
+          isValid = false;
+          break;
+        }
+      }
+      if (isValid) num++;
+    }
+  }
+
+  return num;
 }
 
 console.log(
