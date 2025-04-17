@@ -33,15 +33,34 @@
 
 function solution(budget, products) {
   let answer = 0;
-  return;
+  for (let i = 0; i < products.length; i++) {
+    const discounted = [...products];
+    discounted[i] = [discounted[i][0] / 2, discounted[i][1]];
+
+    const costs = discounted
+      .map(([price, delivery]) => price + delivery)
+      .sort((a, b) => a - b);
+
+    let count = 0;
+    let sum = 0;
+
+    for (let cost of costs) {
+      if (sum + cost > budget) break;
+      sum += cost;
+      count++;
+    }
+
+    answer = Math.max(answer, count);
+  }
+
+  return answer;
 }
 
 console.log(
-  solution(5, [
+  solution(33, [
+    [2, 12],
+    [8, 4],
     [6, 6],
-    [2, 2],
-    [4, 3],
-    [4, 5],
-    [10, 3],
+    [6, 7],
   ])
 );
