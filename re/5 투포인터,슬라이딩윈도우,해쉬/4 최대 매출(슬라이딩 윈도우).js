@@ -17,8 +17,22 @@
  ▣ 출력예제 1
  56*/
 
-function solution() {
-  let answer = 0;
-  let lt = 0;
+function solution(arr, k) {
   let sum = 0;
+  //초기 윈도우의 합 구하고
+  for (let i = 0; i < k; i++) {
+    sum += arr[i];
+  }
+
+  let max = sum;
+
+  //앞뒤 더하고 뺴기
+  for (let i = k; i < arr.length; i++) {
+    sum = sum + arr[i] - arr[i - k];
+    if (max < sum) max = sum;
+  }
+
+  return max;
 }
+
+console.log(solution([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3));
