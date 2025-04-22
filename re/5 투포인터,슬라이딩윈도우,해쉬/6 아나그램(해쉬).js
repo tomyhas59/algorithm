@@ -23,3 +23,23 @@ abaCC
  ▣ 출력예제 2
  NO
 */
+
+function solution(s1, s2) {
+  if (s1.length !== s2.length) return "NO";
+
+  const map = new Map();
+
+  for (let x of s1) {
+    map.set(x, (map.get(x) || 0) + 1);
+  }
+
+  for (let z of s2) {
+    if (!map.has(z) || map.get(z) === 0) return "NO";
+    map.set(z, map.get(z) - 1);
+  }
+
+  return "YES";
+}
+
+console.log(solution("AbaAeCe", "baeeACA"));
+console.log(solution("abaCC", "Caaab"));
