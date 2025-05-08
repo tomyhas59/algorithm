@@ -26,7 +26,16 @@ CBA
  */
 
 function solution(required, plan) {
-  return;
+  let queue = required.split("");
+
+  for (let x of plan) {
+    if (queue.includes(x)) {
+      if (x !== queue[0]) return "NO";
+      queue.shift();
+    }
+  }
+
+  return queue.length === 0 ? "YES" : "NO";
 }
 
-console.log(solution("CBA", "CBDAG"));
+console.log(solution("CBA", "FCBDAG"));
