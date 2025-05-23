@@ -27,11 +27,34 @@
 
 */
 
-function solution() {
-  return;
+function solution(times) {
+  let timeline = [];
+
+  for (let [start, end] of times) {
+    timeline.push([start, "in"]);
+    timeline.push([end, "out"]);
+  }
+
+  // 시간 기준 정렬 (같은 시간이면 'in' 먼저)
+  timeline.sort((a, b) => {
+    if (a[0] === b[0]) return a[1] === "in" ? -1 : 1;
+    return a[0] - b[0];
+  });
+
+  let max = 0;
+  let count = 0;
+
+  for (let [_, type] of timeline) {
+    if (type === "in") count++;
+    else count--;
+    max = Math.max(max, count);
+  }
+
+  return max;
 }
 
-let grid = [
+// 예시 입력
+const guests = [
   [14, 18],
   [12, 15],
   [15, 20],
@@ -39,4 +62,4 @@ let grid = [
   [5, 14],
 ];
 
-console.log(solution(grid));
+console.log(solution(guests)); // 👉 2
