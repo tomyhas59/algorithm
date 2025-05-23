@@ -27,3 +27,16 @@
  ▣ 출력예제 2
  3 5
 */
+
+function solution(arr) {
+  let answer = [];
+  let sorted = arr.slice().sort((a, b) => a - b);
+
+  arr.forEach((v, i) => {
+    if (v !== sorted[i]) answer.push(i + 1);
+  });
+
+  return answer;
+}
+
+console.log(solution([120, 125, 152, 130, 135, 135, 143, 127, 160]));
