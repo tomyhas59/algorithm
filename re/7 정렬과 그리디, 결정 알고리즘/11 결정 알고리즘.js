@@ -22,8 +22,35 @@ DVD를 가급적 줄이려고 한다. 고민 끝에 지니레코드는 M개의 D
  17
 */
 
-function solution() {
-  return;
+function dvdCount(arr, dvd) {
+  let count = 1;
+  let sum = 0;
+  for (let x of arr) {
+    if (sum + x > dvd) {
+      count++;
+      sum = x;
+    } else sum += x;
+  }
+  return count;
+}
+
+function solution(arr, m) {
+  let lt = Math.max(...arr);
+  let rt = arr.reduce((a, c) => a + c);
+  let answer = 0;
+
+  while (lt <= rt) {
+    let mid = Math.floor((lt + rt) / 2);
+
+    if (dvdCount(arr, mid) > m) {
+      lt = mid + 1;
+    } else {
+      answer = mid;
+      rt = mid - 1;
+    }
+  }
+
+  return answer;
 }
 
 console.log(solution([1, 2, 3, 4, 5, 6, 7, 8, 9], 3));
