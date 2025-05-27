@@ -28,8 +28,6 @@ function solution(arr, n) {
     else if (arr[mid] > n) rt = mid - 1;
     else lt = mid + 1;
   }
-
-  return;
 }
 
 console.log(solution([23, 87, 65, 12, 57, 32, 99, 81], 32));
