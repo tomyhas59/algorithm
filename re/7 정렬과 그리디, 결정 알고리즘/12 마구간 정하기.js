@@ -19,9 +19,33 @@ C마리의 말을 N개의 마구간에 배치했을 때 가장 가까운 두 말
  3
 */
 
-function solution(arr, m) {
-  console.log(arr.sort((a, b) => a - b));
-  return;
+function count(a, dist) {
+  let cnt = 1;
+  let last = a[0];
+
+  for (let i = 1; i < a.length; i++) {
+    if (a[i] - ep >= dist) {
+      cnt++;
+      last = a[i];
+    }
+  }
+  return cnt;
+}
+
+function solution(a, m) {
+  let answer;
+  a.sort((a, b) => a - b);
+  let lt = 1;
+  let rt = a[a.length - 1];
+  while (lt <= rt) {
+    let mid = parseInt((lt + rt) / 2);
+    if (count(a, mid) >= m) {
+      answer = mid;
+      lt = mid + 1;
+    } else rt = mid - 1;
+  }
+
+  return answer;
 }
 
 console.log(solution([1, 2, 8, 4, 9], 3));
