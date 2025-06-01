@@ -13,10 +13,14 @@
 */
 
 function solution(n) {
-  if (n === 0) return [];
-  const arr = solution(n - 1);
-  arr.push(n);
-  return arr;
+  function DFS(L) {
+    if (L === 0) return;
+    else {
+      DFS(L - 1);
+      console.log(L);
+    }
+  }
+  DFS(n);
 }
 
 console.log(solution(3));
