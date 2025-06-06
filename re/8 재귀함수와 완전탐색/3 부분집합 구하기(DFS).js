@@ -21,12 +21,15 @@
 
 function solution(n) {
   let answer = [];
-  let ch = Array.from({ length: n + 1 }, () => 0);
+  let ch = Array.from({ length: n }, () => 0);
 
   function DFS(v) {
     if (v === n + 1) {
-      let result = ch.map((v, i) => v === 1 && i).filter((v) => v);
-      answer.push(result);
+      let nums = "";
+      ch.forEach((v, i) => {
+        if (v === 1) nums += i;
+      });
+      if (nums.length > 0) answer.push(nums);
     } else {
       ch[v] = 1;
       DFS(v + 1);
