@@ -20,13 +20,22 @@
  242
 */
 
-function solution(arr) {
-  let answer;
+function solution(c, arr) {
+  let n = arr.length;
+  let max = 0;
 
-  function DFS(L, sum) {}
+  function DFS(L, sum) {
+    if (sum > c) return;
+    if (L === n) {
+      max = Math.max(max, sum);
+    } else {
+      DFS(L + 1, sum + arr[L]);
+      DFS(L + 1, sum);
+    }
+  }
   DFS(0, 0);
 
-  return answer;
+  return max;
 }
 
-console.log(solution([1, 3, 5, 6, 7, 10]));
+console.log(solution(259, [81, 58, 42, 33, 61]));
